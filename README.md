@@ -1,3 +1,3 @@
 Hello,
 
-This repo will some of my scripts / code tests .
+This repo contain some of my scripts / code tests .
