@@ -1,3 +1,3 @@
 Hello,
 
-This repo will contain my scripts written to maintain ActiveDirectory environment computers.
+This repo will some of my scripts / code tests .
