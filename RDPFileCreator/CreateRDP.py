@@ -6,8 +6,9 @@ import argparse
 
 
 def CryptRDPPass(ClearPass):
-    pwdHash = win32crypt.CryptProtectData(ClearPass, 'pwd', None, None, None, 0)
+    pwdHash = win32crypt.CryptProtectData(unicode(ClearPass), 'pwd', None, None, None, 0)
     print binascii.hexlify(pwdHash)
+    return binascii.hexlify(pwdHash)
 
 
 def main(filename, host, user, pwd):
@@ -18,17 +19,18 @@ def main(filename, host, user, pwd):
     :param user:
     :param pwd:
     """
-    print filename, host, user, pwd
+    # print filename, host, user, pwd
 
+    #check for .rdp suffix, add it when needed
     if filename.split('.')[len(filename.split('.'))-1].lower() != 'rdp':
         filename += '.rdp'
-        print(filename)
 
-    if filename.split('.') == 'rdp':
-        f = open(filename, 'w')
-        f.write('username::i::' & user)
-
-
+    # Create our .rdp file
+    fd = open(filename, 'w')
+    fd.write('full address:s:' + host + '\n')
+    fd.write('username:s:' + user + '\n')
+    fd.write('password 51:b:' + CryptRDPPass(pwd) + '\n')
+    fd.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='RDP File Creator')
