@@ -7,29 +7,27 @@ import argparse
 
 def CryptRDPPass(ClearPass):
     pwdHash = win32crypt.CryptProtectData(unicode(ClearPass), 'pwd', None, None, None, 0)
-    print binascii.hexlify(pwdHash)
     return binascii.hexlify(pwdHash)
 
 
-def main(filename, host, user, pwd):
+def main(args):
     """
     Create RDP file with specific parameters requested by user.
-    :param filename:
-    :param host:
-    :param user:
-    :param pwd:
     """
-    # print filename, host, user, pwd
 
     #check for .rdp suffix, add it when needed
-    if filename.split('.')[len(filename.split('.'))-1].lower() != 'rdp':
-        filename += '.rdp'
+    if args.filename.split('.')[len(args.filename.split('.'))-1].lower() != 'rdp':
+        args.filename += '.rdp'
 
     # Create our .rdp file
-    fd = open(filename, 'w')
-    fd.write('full address:s:' + host + '\n')
-    fd.write('username:s:' + user + '\n')
-    fd.write('password 51:b:' + CryptRDPPass(pwd) + '\n')
+    fd = open(args.filename, 'w')
+    fd.write('full address:s:' + args.host + '\n') # host is required by argparse
+    if args.user:
+        fd.write('username:s:' + args.user + '\n')
+    if args.pwd:
+        fd.write('password 51:b:' + CryptRDPPass(args.pwd) + '\n')
+    if args.domain:
+        fd.write('domain:s:' + args.domain + '\n')
     fd.close()
 
 if __name__ == '__main__':
@@ -40,8 +38,10 @@ if __name__ == '__main__':
                         help='Hostname or IP to connect using RDP', required=True)
     parser.add_argument('-user', metavar='username', nargs='?',
                         help='Your username')
+    parser.add_argument('-domain', metavar='domain', nargs='?',
+                        help='enter domain name')
     parser.add_argument('-pwd', metavar='password', nargs='?',
                         help='Your password')
     args = parser.parse_args()
 
-    main(args.filename,args.host,args.user,args.pwd)
+    main(args)
