@@ -1,0 +1,23 @@
+<Config>
+<Globals>
+	<!-- true: generates new passwords evrey running / false: save old password -->
+	<FlushPasswords>False</FlushPasswords>
+	<!-- DN based search NOT Implemented yet - IGNORE -->
+	<BaseDN>
+		<DN>CN=Users,DC=Contoso,DC=COM</DN>
+		<DN>OU=Koko,DC=Contoso,DC=COM</DN>
+	</BaseDN>
+	<SecurityGroups>
+		<Group>FatUsers</Group>
+		<Group>Domain Admins</Group>
+	</SecurityGroups>
+</Globals>
+<Outputs>
+	<!-- Users/Passwords output file path -->
+	<UsersFilePath>C:\Windows\Temp\Users.txt</UsersFilePath>
+	<!-- Diff file, will include new users added in last run. -->
+	<NewUsersDiff>C:\Windows\Temp\NewUsers.txt</NewUsersDiff>
+</Outputs>
+</Config>
+	
+	
