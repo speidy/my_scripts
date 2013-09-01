@@ -1,8 +1,8 @@
 User/Password Generation Script
 ---------------------
 
-generates random passwords for each user for importing to linux servers
-the script relying on Active Directory as users repository
+* Generates random passwords for each user.
+* The script relying on Active Directory as users repository
 
 Installation and Requirements
 ----------------------
