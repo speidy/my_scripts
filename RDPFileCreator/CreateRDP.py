@@ -28,6 +28,9 @@ def main(args):
         fd.write('password 51:b:' + CryptRDPPass(args.pwd) + '\n')
     if args.domain:
         fd.write('domain:s:' + args.domain + '\n')
+    if raw_input('use multi monitor? [Y/N]').lower() == 'y':
+        fd.write('use multimon:i:' + '1' + '\n')
+
     fd.close()
 
 if __name__ == '__main__':
