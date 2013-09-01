@@ -9,7 +9,7 @@ RDP File Creator
 
 Usage
 -----------------
-    usage: CreateRDP.py [-h] -filename [ToscanaPC.rdp] -host [hostname] \n
+    usage: CreateRDP.py [-h] -filename [ToscanaPC.rdp] -host [hostname]
                         [-user [username]] [-domain [domain]] [-pwd [password]]
 
     RDP File Creator
