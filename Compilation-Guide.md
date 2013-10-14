@@ -2,7 +2,7 @@
 
 
 ## Debian 6
-_update system first, as root_
+_update system first, run as root_ <br>
 `apt-get update
 apt-get upgrade
 reboot`
