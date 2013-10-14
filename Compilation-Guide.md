@@ -8,10 +8,10 @@ apt-get upgrade
 reboot`
 
 _install required packages_
-`apt-get install git autoconf libtool pkg-config gcc g++ make
-apt-get install libssl-dev libpam0g-dev libjpeg-dev libx11-dev libxfixes-dev
-apt-get install flex bison libxml2-dev intltool xsltproc xutils-dev python-libxml2 g++ xutils`
-
+`apt-get install git autoconf libtool pkg-config gcc g++ make <br>
+apt-get install libssl-dev libpam0g-dev libjpeg-dev libx11-dev libxfixes-dev <br>
+apt-get install flex bison libxml2-dev intltool xsltproc xutils-dev python-libxml2 g++ xutils` 
+ <br> <br>
 _get xrdp soruce code from github repository_
 `cd ~
 mkdir git
