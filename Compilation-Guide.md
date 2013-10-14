@@ -102,7 +102,7 @@ _let's build X11rdp backend_
 cd xorg
 cd X11R7.6
 ./buildx.sh /opt/X11rdp
-<pre>
+</pre>
 
 _create the symbolic link for sesman_
 <pre>
