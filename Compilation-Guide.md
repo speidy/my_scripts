@@ -1,5 +1,5 @@
 # XRDP Server Compilation Guide
-
+This guide contains instructions for building xrdp on Debian and CentOS systems.
 
 ## Debian 6
 _update system first, run as root_
