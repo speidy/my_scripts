@@ -12,7 +12,7 @@ reboot
 _install required packages_
 <pre>
 apt-get install git autoconf libtool pkg-config gcc g++ make
-apt-get install libssl-dev libpam0g-dev libjpeg-dev libx11-dev libxfixes-dev
+apt-get install libssl-dev libpam0g-dev libjpeg-dev libx11-dev libxfixes-dev libxrandr-dev 
 apt-get install flex bison libxml2-dev intltool xsltproc xutils-dev python-libxml2 g++ xutils
 </pre>
 
