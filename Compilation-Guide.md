@@ -61,10 +61,9 @@ reboot
 
 _install required packages_
 <pre>
-yum install finger cmake patch gcc make autoconf libtool automake
-pkgconfig openssl-devel gettext file
-yum install pam-devel libX11-devel libXfixes-devel libjpeg-devel
-yum install flex bison gcc-c++ libxslt perl-libxml-perl xorg-x11-font-utils
+yum install finger cmake patch gcc make autoconf libtool automake pkgconfig openssl-devel gettext file
+yum install pam-devel libX11-devel libXfixes-devel libjpeg-devel libXrandr-devel
+yum install flex bison gcc-c++ libxslt perl-libxml-perl xorg-x11-font-utils 
 </pre>
 
 install git
