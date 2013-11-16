@@ -64,7 +64,7 @@ or whatever your version is.
 3. Now you need to change the pulse and alsa setting on the terminal server.
 Note, this will break any local sound as all audio will go to the xrdp sink.
 <br><br>
-Create or change these files to look like this.  Make a backup first in case you want to go back.  Note, don't put the long lines of minus in the file, that is a seperator for this document.
+Create or change these files to look like this.  Make a backup first in case you want to go back. 
  
 * /etc/asound.conf
 > pcm.pulse {<br>
