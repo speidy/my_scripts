@@ -2,8 +2,10 @@
 Pulse Audio is a sound system for Linux systems.<br>
 xrdp sink is PA module for redirecting audio output from xrdp server to client over RDP.
 
+
 ### Building xrdp sink for PulseAudio
 ##### This is a temporary manual build procedure.  I hope to make this easier in the future.  Any help would be appreciated.
+##### note: you don't have to build xrdp with special configuration for audio output redirection.
  
 1. First we need to build xrdp pulse sink for your distro.<br>
 You need to build this using the pulseaudio source code.<br>
