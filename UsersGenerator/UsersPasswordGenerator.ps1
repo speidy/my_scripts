@@ -2,7 +2,7 @@
 # generates random passwords for each user for importing to linux servers
 # the script relying on Active Directory as users repository
 # 
-# ** set tunables in config.xml **
+# ** set tunable in config.xml **
 # 
 # Written by Freiberg 16.6.2013
 ### TODOs:
@@ -12,6 +12,9 @@
 
 #Active Directory module is needed, must import it first.
 Import-Module ActiveDirectory
+
+# Define bad characters for UNIX users
+$BadChars = [regex]"[!@#$%^&*()]"
 
 #Generates a RANDOM password which is unix compatible
 function Get-RandomPassword {
@@ -103,26 +106,32 @@ Catch {
 #generate passwords for each users
 $userpass = New-Object string[] $AllUsers.Length
 $diff = New-Object string[] $AllUsers.Length
+$badusers = New-Object string[] $AllUsers.Length
 for ($i=0; $i -lt $AllUsers.Length; $i++) {
     $user = $AllUsers[$i].samAccountName.Trim().ToLower()
-	if ($FlushPasswords -eq "True") {
-		#Create New Passwords for all users
-		$pass = Get-RandomPassword	
-		$userpass[$i] = "{0}:{1}" -f $user, $pass
-	}
-	else
-	{	
-		#Check for existing users
-		$result=IsUserExists
-		if ($result -ne "") {
-			write-host "User Exists" -foreground Green
-			$pass=$result
+    if ($BadChars.matches($user)) {
+		write-host "User {0} contains bad characters, skipping" -f $user -foreground Yellow
+		$badusers[$i] = "{0}" -f $user
+	} else {
+		if ($FlushPasswords -eq "True") {
+			#Create New Passwords for all users
+			$pass = Get-RandomPassword	
 			$userpass[$i] = "{0}:{1}" -f $user, $pass
-		} else {
-			write-host "User NOT Exists, adding it..." -foreground Red
-			$pass = Get-RandomPassword
-			$userpass[$i] = "{0}:{1}" -f $user, $pass
-			$diff[$i] = "{0}:{1}" -f $user, $pass
+		}
+		else
+		{	
+			#Check for existing users
+			$result=IsUserExists
+			if ($result -ne "") {
+				write-host "User Exists" -foreground Green
+				$pass=$result
+				$userpass[$i] = "{0}:{1}" -f $user, $pass
+			} else {
+				write-host "User NOT Exists, adding it..." -foreground Red
+				$pass = Get-RandomPassword
+				$userpass[$i] = "{0}:{1}" -f $user, $pass
+				$diff[$i] = "{0}:{1}" -f $user, $pass
+			}
 		}
 	}
 }
