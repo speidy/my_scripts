@@ -17,6 +17,7 @@
 	<UsersFilePath>C:\Windows\Temp\Users.txt</UsersFilePath>
 	<!-- Diff file, will include new users added in last run. -->
 	<NewUsersDiff>C:\Windows\Temp\NewUsers.txt</NewUsersDiff>
+	<BadUsersPath>C:\Windows\Temp\BadUsers.txt</BadUsersPath>
 </Outputs>
 </Config>
 	

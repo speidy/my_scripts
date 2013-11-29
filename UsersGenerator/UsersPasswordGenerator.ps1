@@ -71,11 +71,13 @@ elseif ($FlushPasswords -eq "false")
 #write-host "Create linux users for users objects under OU(s):" 
 #foreach ($DN in $DNList) { write-host -Foreground Yellow "---->" $DN }
 
-write-host "Create linux users for users objects under Group(s):"
+write-host "Create UNIX-like users for objects under group(s):"
 foreach ($Group in $GroupList) { write-host -Foreground Yellow "---->" $Group }
 ### Outputs Paths
 $UsersFilePath=$configFile.Config.Outputs.UsersFilePath
 $NewUsersDiff=$configFile.Config.Outputs.NewUsersDiff
+$BadUsersPath=$configFile.Config.Outputs.BadUsersPath
+
 
 #add security group members recursively by samAccountName.
 foreach ($Group in $GroupList) { 
