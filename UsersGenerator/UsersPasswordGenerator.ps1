@@ -109,6 +109,7 @@ Catch {
 $userpass = New-Object string[] $AllUsers.Length
 $diff = New-Object string[] $AllUsers.Length
 $badusers = New-Object string[] $AllUsers.Length
+
 for ($i=0; $i -lt $AllUsers.Length; $i++) {
     $user = $AllUsers[$i].samAccountName.Trim().ToLower()
     if ($BadChars.matches($user)) {
@@ -142,4 +143,5 @@ for ($i=0; $i -lt $AllUsers.Length; $i++) {
 ###Write Outputs
 $userpass | Out-File -Encoding Default $UsersFilePath
 $diff | Out-File -Encoding Default $NewUsersDiff
+$badusers | Out-File -Encoding Default $BadUsersPath
 
