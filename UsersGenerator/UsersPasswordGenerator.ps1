@@ -7,14 +7,13 @@
 # Written by Freiberg 16.6.2013
 ### TODOs:
 ###		* DN-Based Search
-###		* User chars validation (check for bad chars, not allowed in UNIX)
 ###		* Logging mechanism?
 
 #Active Directory module is needed, must import it first.
 Import-Module ActiveDirectory
 
 # Define bad characters for UNIX users
-$BadChars = [regex]"[!@#$%^&*()_+=]"
+$BadChars = [regex]"[!@#$%^&*()+=]"
 
 #Generates a RANDOM password which is unix compatible
 function Get-RandomPassword {
@@ -116,25 +115,27 @@ for ($i=0; $i -lt $AllUsers.Length; $i++) {
 		write-host "User {0} contains bad characters, skipping" -f $user -foreground Yellow
 		$badusers[$i] = "{0}" -f $user
 	} else {
-		if ($FlushPasswords -eq "True") {
-			#Create New Passwords for all users
-			$pass = Get-RandomPassword	
+		#Check for existing users
+		$result=IsUserExists
+		if ($result -ne "") {
+			write-host "User Exists" -foreground Green
+			if ($FlushPasswords -eq "True") {
+				#Create New Passwords for all users
+				$pass = Get-RandomPassword	
+			} else {
+				$pass = $result
+			}
+			
+			# Add user to the list
 			$userpass[$i] = "{0}:{1}" -f $user, $pass
 		}
-		else
-		{	
-			#Check for existing users
-			$result=IsUserExists
-			if ($result -ne "") {
-				write-host "User Exists" -foreground Green
-				$pass=$result
-				$userpass[$i] = "{0}:{1}" -f $user, $pass
-			} else {
-				write-host "User NOT Exists, adding it..." -foreground Red
-				$pass = Get-RandomPassword
-				$userpass[$i] = "{0}:{1}" -f $user, $pass
-				$diff[$i] = "{0}:{1}" -f $user, $pass
-			}
+			$pass=$result
+			$userpass[$i] = "{0}:{1}" -f $user, $pass
+		} else {
+			write-host "User NOT Exists, adding it..." -foreground Red
+			$pass = Get-RandomPassword
+			$userpass[$i] = "{0}:{1}" -f $user, $pass
+			$diff[$i] = "{0}:{1}" -f $user, $pass
 		}
 	}
 }
