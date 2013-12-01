@@ -14,7 +14,7 @@
 Import-Module ActiveDirectory
 
 # Define bad characters for UNIX users
-$BadChars = [regex]"[!@#$%^&*()]"
+$BadChars = [regex]"[!@#$%^&*()_+=]"
 
 #Generates a RANDOM password which is unix compatible
 function Get-RandomPassword {
@@ -112,7 +112,7 @@ $badusers = New-Object string[] $AllUsers.Length
 
 for ($i=0; $i -lt $AllUsers.Length; $i++) {
     $user = $AllUsers[$i].samAccountName.Trim().ToLower()
-    if ($BadChars.matches($user)) {
+    if ($BadChars.Match($user).Success) {
 		write-host "User {0} contains bad characters, skipping" -f $user -foreground Yellow
 		$badusers[$i] = "{0}" -f $user
 	} else {
