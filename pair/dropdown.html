@@ -1,0 +1,141 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>CSS Dropdown Menu</title>
+
+<style>
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote { 
+	padding: 0; 
+	border: 0;
+}
+
+body {
+	
+	font-family: Tahoma, Arial, sans-serif; font-size: 12px; 
+	line-height: 30px;
+	
+}
+
+nav {
+}
+
+nav ul ul {
+	display: none;
+}
+
+	nav ul li:hover > ul {
+		display: block;
+	}
+
+
+nav ul {
+	list-style: none;
+	position: relative;
+	display: inline-table;
+}
+	nav ul:after {
+		content: ""; clear: both; display: block;
+	}
+	
+	.selected{
+		background: #585858;
+	}
+	
+	nav ul li {
+		float: left;
+		position:relative;
+			width: 120px;
+	background: #004970;
+	margin: 0 0 0 4px;
+	
+	
+	 -webkit-transition: all 1s;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: all 1s;  /* Firefox 4-15 */
+       -o-transition: all 1s;  /* Opera 10.50?12.00 */
+          transition: all 1s;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+	}
+		nav ul li:hover {
+			background: #bfbfbf;
+			
+		}
+			nav ul li:hover a {
+				color: #fff;
+			}
+		
+		nav ul li a {
+			display: block; 
+			/* padding: 0 30px; */
+			text-align:center;
+			color: #fff; text-decoration: none;
+		}
+			
+		
+	nav ul ul {
+		background: white; border-radius: 0px; 
+		padding: 0;
+		right: 0;
+		position: absolute; top: 100%;
+	}
+		nav ul ul li {
+			float: none; 
+			width:120px;
+			line-height: 26px;
+			
+			
+			background: #585858;
+			/* border-top: 1px solid #585858;
+			border-bottom: 1px solid #585858; position: relative; */
+		}
+			nav ul ul li a {
+				padding: 0px 10px;
+				text-align:center;
+				color: #fff;
+			    -webkit-transition: all 1s;  /* Chrome 1-25, Safari 3.2+ */
+                -moz-transition: all 1s;  /* Firefox 4-15 */
+                -o-transition: all 1s;  /* Opera 10.50?12.00 */
+                 transition: all 1s;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+			}	
+				nav ul ul li a:hover {
+					background: #bfbfbf;
+				}
+		
+	nav ul ul ul {
+		position: absolute; right: 100%; top:0;
+	}	
+	
+</style>
+
+<body>
+
+<nav>
+	<ul>
+		<li><a href="http://talshani.wix.com/pair#!contact/con8" target="_top">צרו קשר</a></li>
+		<li><a href="http://talshani.wix.com/pair#!-/cqho" target="_top">פרסומים</a></li>
+		<li><a href="http://talshani.wix.com/pair#!untitled/c1pgm" target="_top">היחידה המחקרית</a>
+			<ul>
+				<li><a href="http://talshani.wix.com/pair#!untitled/c1pgm" target="_top">מטרה</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/c19aw" target="_top">הצוות</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/cmoy" target="_top">דרכי הגעה</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/c1szz" target="_top">מחקרים נוכחיים</a></li>
+			</ul>
+		</li>
+		<li><a href="http://talshani.wix.com/pair#!untitled/c15ds" target="_top">היחידה הטיפולית</a>
+			<ul>
+				<li><a href="http://talshani.wix.com/pair#!untitled/c15ds" target="_top">מטרה</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/c1y9c" target="_top">הצוות</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/cb4z" target="_top">מידע למשפחות</a></li>
+				<li><a href="http://talshani.wix.com/pair#!--/c1d2n" target="_top">הכשרה מקצועית</a></li>
+			</ul>
+		</li>
+		<li><a href="http://talshani.wix.com/pair#!about/cjn9" target="_top" class="selected">אודות המכון</a>
+			<ul>
+				<li><a href="http://talshani.wix.com/pair#!untitled/cxnl" target="_top">החזון</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/c1psu" target="_top">חברי הנהלה</a></li>
+				<li><a href="http://talshani.wix.com/pair#!------/c1eke" target="_top">הוועדה המייעצת</a></li>
+				<li><a href="http://talshani.wix.com/pair#!-/c12qm" target="_top">זיאמה ארקין</a></li>
+			</ul>
+		</li>
+		<li><a href="http://talshani.wix.com/pair" target="_top">דף בית</a></li>
+	</ul>
+</nav>
+
+</body></html>
