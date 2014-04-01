@@ -28,7 +28,13 @@
 	{
 		display: inline;
 	} 
-	 
+	
+	#menu li~li 
+	{
+		padding: 4px;
+		border-left: 1px solid rgb(195, 71, 22);
+	}
+	
 	#menu li a 
 	{ 
 		color: rgb(0, 0, 0);
@@ -37,27 +43,32 @@
 		font-family: Arial, sans-serif;
 	}
 	
-	#menu li~li 
-	{
-		padding: 4px;
-		border-left: 1px solid rgb(195, 71, 22);
+	#menu li a.selected
+	{ 
+		color: rgb(242, 101, 36);
+		transition: color 0.3s ease 0s;
+		webkit-transition: color 0.3s ease 0s;
 	}
-	 
+	
+	#menu li a.selected:hover 
+	{ 
+		color: rgb(242, 101, 36);
+	}
+	
 	#menu li a:hover 
 	{ 
 		color: rgb(249, 173, 59);
 		transition: color 0.3s ease 0s;
 		webkit-transition: color 0.3s ease 0s;
 	}
-	
 	</style>
   </head>
   <body>
     <div id="navigation">
       <div id="menu">
         <ul>
-			<li class="currentLink">
-				<a href="http://www.ildadhd.idc.ac.il/#!home/cm6d">Home</a>
+			<li>
+				<a class="selected" href="http://www.ildadhd.idc.ac.il/#!home/cm6d">Home</a>
 			</li>
 			<li>
 				<a href="http://www.ildadhd.idc.ac.il/#!about/c5fg">About</a>
